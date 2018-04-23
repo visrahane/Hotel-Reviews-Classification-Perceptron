@@ -60,20 +60,20 @@ def calculateWordProbs(classWordMap):
 def trainPerceptron(classNo):
     #init
     classWeightMap = defaultdict(int);
-    for key in vocabSet:
-        classWeightMap[key]=0
+    # for key in vocabSet:
+    #     classWeightMap[key]=0
     bias=0;
 
     for iteration in range(21):
         for doc in sentenceFeatureClassList:
             activation=0;
-            for featureX,weight in classWeightMap.items():
-                activation+=weight*doc[3].get(featureX,0);
+            for featureX,input in doc[3].items():
+                activation+=input*classWeightMap.get(featureX,0);
             activation+=bias;
             y=doc[classNo];
             if(y*activation<=0):
-                for featureA,weightA in classWeightMap.items():
-                    classWeightMap[featureA]=weightA+y*doc[3].get(featureA,0);
+                for featureA,inputA in doc[3].items():
+                    classWeightMap[featureA]=classWeightMap.get(featureA,0)+y*inputA;
                 bias += y;
 
     return classWeightMap,bias;
