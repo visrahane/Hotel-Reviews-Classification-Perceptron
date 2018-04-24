@@ -93,6 +93,7 @@ def trainVanillaPerceptron(classNo):
     bias = 0;
 
     for iteration in range(21):
+        random.shuffle(sentenceFeatureClassList);
         for doc in sentenceFeatureClassList:
             activation = 0;
             for featureX, input in doc[3].items():

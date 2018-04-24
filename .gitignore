@@ -1,2 +1,4 @@
 __init__.py
 vanillamodel.txt
+percepoutput.txt
+averagedmodel.txt
